@@ -135,4 +135,43 @@ $(function(){
         return false;
     })
 
+    // MENU RESPONSIVO
+    $('.mobile').click(function(){
+        $(this).find('ul').slideToggle();
+    })
+    
+
+    //SISTEMA DE NAVEGAÇÃO NOS DEPOIMENTOS DA INDEX.HMTL
+
+
+    let depoimentoAmt = $('.depoimento-single p').length;
+    
+    console.log(depoimentoAmt);
+
+    iniciarDepoimento();
+    depoimento();
+
+    function iniciarDepoimento(){
+        $('.depoimento-single p').hide();
+        $('.depoimento-single p').eq(0).show();
+    }
+
+    function depoimento(){
+        $('[next]').click(function(){
+            curIndex++;
+            if(curIndex >= depoimentoAmt)
+                curIndex = 0;
+            $('.depoimento-single p').hide();
+            $('.depoimento-single p').eq(curIndex).show();
+
+        })
+        $('[prev]').click(function(){
+            curIndex--;
+            if(curIndex < 0)
+                curIndex = depoimentoAmt-1;
+            $('.depoimento-single p').hide();
+            $('.depoimento-single p').eq(curIndex).show();
+        })
+    }
+
 })
